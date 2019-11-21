@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name', $user->name) }}" placeholder="Enter name" autofocus>
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name', $user->name) }}" placeholder="Enter name" data-validation="required length" data-validation-length="3-255" autofocus />
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email', $user->email) }}" placeholder="Enter email" >
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email', $user->email) }}" placeholder="Enter email" data-validation="required email length" data-validation-length="3-255" />
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
@@ -45,9 +45,9 @@
                             <div class="col-md-6">
 								<div class="input-group mb-3">
 									<div class="input-group-append">
-										<span class="input-group-text">+</span>
+										<span class="input-group-text">+44</span>
 									</div>
-									<input id="mobile_number" type="text" class="form-control{{ $errors->has('mobile_number') ? ' is-invalid' : '' }}" name="mobile_number" value="{{ old('mobile_number', $user->mobile_number) }}" placeholder="Mobile number(start with country code)" >
+									<input id="mobile_number" type="text" class="form-control{{ $errors->has('mobile_number') ? ' is-invalid' : '' }}" name="mobile_number" value="{{ old('mobile_number', $user->mobile_number) }}" placeholder="Mobile number(without country code)" data-validation="required number length"  data-validation-length="min10" />
 									@if ($errors->has('mobile_number'))
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $errors->first('mobile_number') }}</strong>
@@ -61,7 +61,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Select Hint Question') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control{{ $errors->has('hint_question') ? ' is-invalid' : '' }}" name="hint_question" id="hint_question">
+                                <select class="form-control{{ $errors->has('hint_question') ? ' is-invalid' : '' }}" name="hint_question" id="hint_question" data-validation="required">
 									<option value="">Select hint question</option>
 									@if(!empty(config('constant.hint_questions')))
 										@foreach(config('constant.hint_questions') as $k=>$v)
@@ -87,7 +87,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Hint Answer') }}</label>
 							
                             <div class="col-md-6">
-								<textarea name="hint_answer" id="hint_answer" class="form-control{{ $errors->has('hint_answer') ? ' is-invalid' : '' }}" placeholder="Enter answer">{{old('hint_answer', $user->hint_answer)}}</textarea>
+								<textarea name="hint_answer" id="hint_answer" class="form-control{{ $errors->has('hint_answer') ? ' is-invalid' : '' }}" placeholder="Enter answer" data-validation="required">{{old('hint_answer', $user->hint_answer)}}</textarea>
 								
 								@if ($errors->has('hint_answer'))
                                     <span class="invalid-feedback" role="alert">

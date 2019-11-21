@@ -19,6 +19,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/faq', 'HomeController@faq')->name('faq');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::post('/profile', 'HomeController@saveProfile')->name('saveProfile');
 Route::any('/email', 'HomeController@email');

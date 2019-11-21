@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['except' => ['faq']]);
     }
 	
     /**
@@ -53,7 +53,7 @@ class HomeController extends Controller
 			$validArr = [
                 'name' => 'required|string|max:255',
 				'email' => 'required|string|email|max:255|unique:users,email,'.\Auth::user()->id,
-				'mobile_number' => 'required|regex:/(44)[0-9]{9}/',
+				'mobile_number' => 'required|numeric|regex:/[0-9]{10}/',
 				'hint_question' => 'required',
 				'hint_answer' => 'required',
             ];
@@ -76,4 +76,8 @@ class HomeController extends Controller
 			}
 		}
     }
+
+	public function faq(){
+		return view('faq');
+	}
 }
