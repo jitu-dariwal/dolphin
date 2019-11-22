@@ -45,7 +45,7 @@
 						<ul class="navbar-nav ml-auto">
 							<li class="nav-item">
 								<a id="navbarDropdown" class="nav-link" href="{{ route('faq') }}">
-									FAQ
+									Help
 								</a>
 							</li>	
 							<!-- Authentication Links -->
